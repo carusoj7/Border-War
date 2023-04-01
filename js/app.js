@@ -52,29 +52,30 @@ const cards = [
   {card: "s3", value: 3},
   {card: "s2", value: 2},
 ]
-console.log(cards)
-
-
-
-
-
-
 // Declare deck variables
 
-let playerDeck, computerDeck
-let cardToRemove
+let playerDeck = []
+let computerDeck = []
+let flipArray = []
 // Cached element references
 let playerDeckEl = document.getElementById("playerDeck")
+let playerFlipEl = document.getElementById("playerFlip")
 let computerDeckEl = document.getElementById("computerDeck")
+let computerFlipEl = document.getElementById("computerFlip")
 
 // Event listeners
-document.getElementById("btn").addEventListener("click", () => console.log("clicked"))
+document.getElementById("btn").addEventListener("click", handleClick())
 // Functions
 init()
 
 function init() {
   shuffle()
   deal()
+  render()
+}
+
+function render() {
+  handleClick()
 }
 
 function shuffle() {
@@ -99,3 +100,13 @@ function deal() {
 }
 console.log(playerDeck)
 console.log(computerDeck)
+
+function handleClick() {
+  if ((playerDeck.length > 0) && (computerDeck.length > 0)){
+    const playerCardPicked = playerDeck.splice(0,1)
+    flipArray.push(playerCardPicked[0])
+    const computerCardPicked = computerDeck.splice(0,1)
+    flipArray.push(computerCardPicked[0])
+    }
+}
+console.log(flipArray);
