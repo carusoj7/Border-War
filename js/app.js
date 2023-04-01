@@ -6,6 +6,8 @@ let cardToRemove
 let playerDeckEl = document.getElementById("playerDeck")
 let computerDeckEl = document.getElementById("computerDeck")
 
+// Event listeners
+document.getElementById("btn").addEventListener("click")
 // Functions
 init()
 
@@ -34,5 +36,7 @@ function deal() {
     }
   }
   )}
-console.log(playerDeck);
-console.log(computerDeck);
+
+  function handleClick() {
+    
+  }
