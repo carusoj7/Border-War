@@ -56,7 +56,8 @@ const cards = [
 
 let playerDeck = []
 let computerDeck = []
-let flipArray = []
+let playerFlip = []
+let computerFlip = []
 // Cached element references
 let playerDeckEl = document.getElementById("playerDeck")
 let playerFlipEl = document.getElementById("playerFlip")
@@ -104,9 +105,10 @@ console.log(computerDeck)
 function handleClick() {
   if ((playerDeck.length > 0) && (computerDeck.length > 0)){
     const playerCardPicked = playerDeck.splice(0,1)
-    flipArray.push(playerCardPicked[0])
+    playerFlip.push(playerCardPicked[0])
     const computerCardPicked = computerDeck.splice(0,1)
-    flipArray.push(computerCardPicked[0])
+    computerFlip.push(computerCardPicked[0])
     }
 }
-console.log(flipArray);
+console.log(playerFlip);
+console.log(computerFlip)
