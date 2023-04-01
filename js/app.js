@@ -1,5 +1,66 @@
+const cards = [
+  {card: "dA", value: 14},
+  {card: "dQ", value: 12},
+  {card: "dK", value:13},
+  {card: "dJ", value: 11},
+  {card: "d10", value: 10},
+  {card: "d9", value: 9},
+  {card: "d8", value: 8},
+  {card: "d7", value: 7},
+  {card: "d6", value: 6},
+  {card: "d5", value: 5},
+  {card: "d4", value: 4},
+  {card: "d3", value: 3},
+  {card: "d2", value: 2},
+  {card: "hA", value: 14},
+  {card: "hQ", value: 12},
+  {card: "hK", value: 13},
+  {card: "hJ", value: 11},
+  {card: "h10", value: 10},
+  {card: "h9", value: 9},
+  {card: "h8", value: 8},
+  {card: "h7", value: 7},
+  {card: "h6", value: 6},
+  {card: "h5", value: 5},
+  {card: "h4", value: 4},
+  {card: "h3", value: 3},
+  {card: "h2", value: 2},
+  {card: "cA", value: 14},
+  {card: "cQ", value: 12},
+  {card: "cK", value: 13},
+  {card: "cJ", value: 11},
+  {card: "c10", value: 10},
+  {card: "c9", value: 9},
+  {card: "c8", value: 8},
+  {card: "c7", value: 7},
+  {card: "c6", value: 6},
+  {card: "c5", value: 5},
+  {card: "c4", value: 4},
+  {card: "c3", value: 3},
+  {card: "c2", value: 2},
+  {card: "sA", value: 14},
+  {card: "sQ", value: 12},
+  {card: "sK", value: 13},
+  {card: "sJ", value: 11},
+  {card: "s10", value: 10},
+  {card: "s9", value: 9},
+  {card: "s8", value: 8},
+  {card: "s7", value: 7},
+  {card: "s6", value: 6},
+  {card: "s5", value: 5},
+  {card: "s4", value: 4},
+  {card: "s3", value: 3},
+  {card: "s2", value: 2},
+]
+console.log(cards)
+
+
+
+
+
+
 // Declare deck variables
-const starterDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
+
 let playerDeck, computerDeck
 let cardToRemove
 // Cached element references
@@ -17,26 +78,24 @@ function init() {
 }
 
 function shuffle() {
-  for (let i = starterDeck.length - 1; i > 0; i--) {
+  for (let i = cards.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * i);
-    let temp = starterDeck[i];
-    starterDeck[i] = starterDeck[j];
-    starterDeck[j] = temp;
+    let temp = cards[i];
+    cards[i] = cards[j];
+    cards[j] = temp;
   } 
 }
 
 function deal() { 
   playerDeck = []
   computerDeck = []
-  starterDeck.forEach((card, i) => {
+  cards.forEach((card, i) => {
     if (i % 2 === 1) {
       playerDeck.push(card)
-    } else if (starterDeck[i] % 2 !== 1) {
+    } else if (cards[i] % 2 !== 1) {
       computerDeck.push(card)
     }
-  }
-  )}
-
-  function handleClick() {
-
-  }
+  })
+}
+console.log(playerDeck)
+console.log(computerDeck)
