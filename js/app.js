@@ -7,7 +7,7 @@ let playerDeckEl = document.getElementById("playerDeck")
 let computerDeckEl = document.getElementById("computerDeck")
 
 // Event listeners
-document.getElementById("btn").addEventListener("click")
+document.getElementById("btn").addEventListener("click", () => console.log("clicked"))
 // Functions
 init()
 
@@ -38,5 +38,5 @@ function deal() {
   )}
 
   function handleClick() {
-    
+
   }
