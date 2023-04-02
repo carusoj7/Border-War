@@ -74,7 +74,7 @@ init()
 function init() {
   shuffle()
   deal()
-  render()
+  // render()
 }
 
 function shuffle() {
@@ -97,23 +97,38 @@ function deal() {
     }
   })
 }
-console.log(playerDeck)
-console.log(computerDeck)
+
 
 function handleClick() {
   if ((playerDeck.length > 0) && (computerDeck.length > 0)){
-    const playerCardPicked = playerDeck.splice(0,1)
-    playerFlip.push(playerCardPicked[0].value)
-    const computerCardPicked = computerDeck.splice(0,1)
-    computerFlip.push(computerCardPicked[0].value)
+    const playerCardPicked = playerDeck[0]
+    playerFlip.push(playerCardPicked.value)
+    const computerCardPicked = computerDeck[0]
+    computerFlip.push(computerCardPicked.value)
     console.log(playerFlip);
     console.log(computerFlip)
+    compare()
   }
 }
-function determineHandWinner {
-
+function compare() {
+  if (playerFlip[playerFlip.length - 1] > computerFlip[computerFlip.length - 1]) {
+    const computerCardLost = computerDeck.splice(0,1)
+    const playerCard = playerDeck.splice(0,1)
+    playerDeck.push(computerCardLost[0], playerCard[0])
+    playerFlip = []
+    computerFlip = []
+  } else if (playerFlip[playerFlip.length - 1] < computerFlip[computerFlip.length - 1]) {
+    const playerCardLost = playerDeck.splice(0,1)
+    const computerCard = computerDeck.splice(0,1)
+    computerDeck.push(playerCardLost[0], computerCard[0])
+    playerFlip = []
+    computerFlip = []
+  }
+  console.log(playerDeck);
+  console.log(computerDeck);
 }
 
+compare()
 // function render() {
 //   if (playerFlip.length) {  
 //     playerDeckEl.classList.remove("outline")
