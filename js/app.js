@@ -58,6 +58,8 @@ let playerDeck = []
 let computerDeck = []
 let playerFlip = []
 let computerFlip = []
+let playerCardToRemove
+let computerCardToRemove
 // Cached element references
 let playerDeckEl = document.getElementById("playerDeck")
 let playerFlipEl = document.getElementById("playerFlip")
@@ -65,7 +67,7 @@ let computerDeckEl = document.getElementById("computerDeck")
 let computerFlipEl = document.getElementById("computerFlip")
 
 // Event listeners
-document.getElementById("btn").addEventListener("click", handleClick())
+document.getElementById("btn").addEventListener("click", handleClick)
 // Functions
 init()
 
@@ -73,10 +75,6 @@ function init() {
   shuffle()
   deal()
   render()
-}
-
-function render() {
-  handleClick()
 }
 
 function shuffle() {
@@ -105,10 +103,21 @@ console.log(computerDeck)
 function handleClick() {
   if ((playerDeck.length > 0) && (computerDeck.length > 0)){
     const playerCardPicked = playerDeck.splice(0,1)
-    playerFlip.push(playerCardPicked[0])
+    playerFlip.push(playerCardPicked[0].value)
     const computerCardPicked = computerDeck.splice(0,1)
-    computerFlip.push(computerCardPicked[0])
-    }
+    computerFlip.push(computerCardPicked[0].value)
+    console.log(playerFlip);
+    console.log(computerFlip)
+  }
 }
-console.log(playerFlip);
-console.log(computerFlip)
+function determineHandWinner {
+
+}
+
+// function render() {
+//   if (playerFlip.length) {  
+//     playerDeckEl.classList.remove("outline")
+    
+//   }
+// }
+
