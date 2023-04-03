@@ -104,9 +104,7 @@ function deal() {
   })
 }
 
-
 function handleClick() {
-  if ((playerDeck.length > 0) && (computerDeck.length > 0)){
     console.log(playerDeck)
     console.log(computerDeck)
     const playerCardPicked = playerDeck[0]
@@ -115,40 +113,37 @@ function handleClick() {
     computerFlip.push(computerCardPicked.value)
     console.log(playerFlip);
     console.log(computerFlip)
-    // compare()
-  } else {
+    compare()
+    cleanArrays()
     determineWinner()
-  }
 }
 
-function compare(player, computer) {
-   if (player[0].value > computer[0].value) {
-    pHandWin()
-   }
-}
-function pHandWin() {
-  
-  
-}
-
-// function compare() {
+function compare() {
   if (playerFlip[playerFlip.length - 1] > computerFlip[computerFlip.length - 1]) {
     const computerCardLost = computerDeck.splice(0,1)
     const playerCard = playerDeck.splice(0,1)
     playerDeck.push(computerCardLost[0], playerCard[0])
-    playerFlip = []
-    computerFlip = []
     console.log(playerDeck)
     console.log(computerDeck);;
   } else if (playerFlip[playerFlip.length - 1] < computerFlip[computerFlip.length - 1]) {
     const playerCardLost = playerDeck.splice(0,1)
     const computerCard = computerDeck.splice(0,1)
     computerDeck.push(playerCardLost[0], computerCard[0])
-    playerFlip = []
-    computerFlip = []
     console.log(playerDeck)
     console.log(computerDeck);;
   } else if (playerFlip[playerFlip.length - 1] === computerFlip[computerFlip.length - 1]) {
+    //here's where the if condition would be
+    if ((playerDeck.length > 0) && (computerDeck.length < 4)) {
+      console.log("player should win")
+      playerDeck.push(computerDeck.splice(0, computerDeck.length))
+      //write player winner function
+      return
+    } else if ((playerDeck.length < 4) && (computerDeck.length > 0)) {
+      console.log("computer should win")
+      computerDeck.push(playerDeck.splice(0, playerDeck.length))
+      //write computer win
+      return
+    }
     const playerWarCardPicked = playerDeck[4]
     playerWarFlip.push(playerWarCardPicked.value)
     const computerWarCardPicked = computerDeck[4]
@@ -168,11 +163,7 @@ function pHandWin() {
       })
         console.log(playerDeck);
         console.log(computerDeck);
-        playerFlip = []
-        computerFlip = []
-        playerWarFlip = []
-        computerWarFlip = []
-        
+       
     } else if (playerWarFlip[playerWarFlip.length - 1] < computerWarFlip[computerWarFlip.length - 1]) {
       console.log("computer won war")
       const computerWarWon = computerDeck.splice(0,5)
@@ -185,10 +176,6 @@ function pHandWin() {
       })
       console.log(playerDeck);
       console.log(computerDeck);
-      playerFlip = []
-      computerFlip = []
-      playerWarFlip = []
-      computerWarFlip = []
         
     } else if (playerWarFlip[playerWarFlip.length - 1] === computerWarFlip[computerWarFlip.length - 1]) {
       const playerDoubleWarCard = playerDeck[8]
@@ -209,12 +196,7 @@ function pHandWin() {
         })
         console.log(playerDeck);
         console.log(computerDeck);
-        playerFlip = []
-        computerFlip = []
-        playerWarFlip = []
-        computerWarFlip = []
-        playerDoubleWarFlip = []
-        computerDoubleWarFlip = []
+        
           
       } else if (playerDoubleWarFlip[playerDoubleWarFlip - 1] < computerDoubleWarFlip[computerDoubleWarFlip - 1]) {
         const computerDoubleWarWon = computerDeck.splice(0,10)
@@ -227,28 +209,32 @@ function pHandWin() {
           })
         console.log(playerDeck);
         console.log(computerDeck);
-        playerFlip = []
-        computerFlip = []
-        playerWarFlip = []
-        computerWarFlip = []
-        playerDoubleWarFlip = []
-        computerDoubleWarFlip = []
-      } else {
-      }
+        
+      } 
     }
   }
 }
 
 function determineWinner() {
-  if ((playerDeck.length > 0) && (computerDeck.length = 0)) {
+  console.log('in determine winner')
+  console.log(playerDeck)
+  console.log(computerDeck)
+  if ((playerDeck.length > 0) && (computerDeck.length === 0)) {
     messageEl.textContent = "Rock Chalk! KU Won!"
-  } else if ((playerDeck.length = 0) && (computerDeck.length > 0)) {
+  }
+  if ((playerDeck.length === 0) && (computerDeck.length > 0)) {
     messageEl.textContent = "Go Tigers! Mizzou Won!"
-  } else {
-    messageEl.textContent = "It's a tie!"
   }
 }
 
+function cleanArrays() {
+  playerFlip = []
+  computerFlip = []
+  playerWarFlip = []
+  computerWarFlip = []
+  playerDoubleWarFlip = []
+  computerDoubleWarFlip = []
+}
 
 // compare()
 // function render() {
