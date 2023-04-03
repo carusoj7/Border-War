@@ -78,7 +78,7 @@ init()
 
 function init() {
   shuffle()
-  deal()
+  
   // render()
 }
 
@@ -88,6 +88,7 @@ function shuffle() {
     let temp = cards[i];
     cards[i] = cards[j];
     cards[j] = temp;
+    deal()
   } 
 }
 
@@ -106,6 +107,8 @@ function deal() {
 
 function handleClick() {
   if ((playerDeck.length > 0) && (computerDeck.length > 0)){
+    console.log(playerDeck)
+    console.log(computerDeck)
     const playerCardPicked = playerDeck[0]
     playerFlip.push(playerCardPicked.value)
     const computerCardPicked = computerDeck[0]
@@ -181,7 +184,7 @@ function compare() {
         playerWarFlip = []
         computerWarFlip = []
         
-      } else if (playerDoubleWarFlip[playerDoubleWarFlip.length - 1] === computerWarFlip[computerWarFlip.length - 1]) {
+      } else if (playerWarFlip[playerWarFlip.length - 1] === computerWarFlip[computerWarFlip.length - 1]) {
         const playerDoubleWarCard = playerDeck[8]
         playerDoubleWarFlip.push(playerDoubleWarCard.value)
         const computerDoubleWarCard = computerDeck[8]
@@ -224,12 +227,13 @@ function compare() {
           computerWarFlip = []
           playerDoubleWarFlip = []
           computerDoubleWarFlip = []
+        } else {
+
         }
       }
   }
 }
-    console.log(playerDeck);
-    console.log(computerDeck);
+    
 
 
 // compare()
