@@ -110,22 +110,28 @@ function handleClick() {
     console.log(playerDeck)
     console.log(computerDeck)
     const playerCardPicked = playerDeck[0]
-    playerFlip.push(playerCardPicked.value)
     const computerCardPicked = computerDeck[0]
+    playerFlip.push(playerCardPicked.value)
     computerFlip.push(computerCardPicked.value)
     console.log(playerFlip);
     console.log(computerFlip)
-    compare()
-  } else if ((playerDeck.length > 0) && (computerDeck.length = 0)) {
-    messageEl.textContent = "Rock Chalk! KU Won!"
-  } else if ((playerDeck.length = 0) && (computerDeck.length > 0)) {
-    messageEl.textContent = "Go Tigers! Mizzou Won!"
+    // compare()
   } else {
-    messageEl.textContent = "It's a tie!"
+    determineWinner()
   }
 }
 
-function compare() {
+function compare(player, computer) {
+   if (player[0].value > computer[0].value) {
+    pHandWin()
+   }
+}
+function pHandWin() {
+  
+  
+}
+
+// function compare() {
   if (playerFlip[playerFlip.length - 1] > computerFlip[computerFlip.length - 1]) {
     const computerCardLost = computerDeck.splice(0,1)
     const playerCard = playerDeck.splice(0,1)
@@ -142,22 +148,63 @@ function compare() {
     computerFlip = []
     console.log(playerDeck)
     console.log(computerDeck);;
-    } else if (playerFlip[playerFlip.length - 1] === computerFlip[computerFlip.length - 1]) {
-      const playerWarCardPicked = playerDeck[4]
-      playerWarFlip.push(playerWarCardPicked.value)
-      const computerWarCardPicked = computerDeck[4]
-      computerWarFlip.push(computerWarCardPicked.value)
-      console.log('war');
-      console.log(playerWarFlip);
-      console.log(computerWarFlip);
-      if (playerWarFlip[playerWarFlip.length - 1] > computerWarFlip[computerWarFlip.length - 1]) {
-        console.log("player won war")
-        const computerWarLost = computerDeck.splice(0,5)
-        const playerWarWon = playerDeck.splice(0,5)
-        computerWarLost.forEach((card) => {
-          playerDeck.push(card)
-        })
+  } else if (playerFlip[playerFlip.length - 1] === computerFlip[computerFlip.length - 1]) {
+    const playerWarCardPicked = playerDeck[4]
+    playerWarFlip.push(playerWarCardPicked.value)
+    const computerWarCardPicked = computerDeck[4]
+    computerWarFlip.push(computerWarCardPicked.value)
+    console.log('war');
+    console.log(playerWarFlip);
+    console.log(computerWarFlip);
+    if (playerWarFlip[playerWarFlip.length - 1] > computerWarFlip[computerWarFlip.length - 1]) {
+      console.log("player won war")
+      const computerWarLost = computerDeck.splice(0,5)
+      const playerWarWon = playerDeck.splice(0,5)
+      computerWarLost.forEach((card) => {
+        playerDeck.push(card)
+      })
         playerWarWon.forEach((card) =>{
+        playerDeck.push(card)
+      })
+        console.log(playerDeck);
+        console.log(computerDeck);
+        playerFlip = []
+        computerFlip = []
+        playerWarFlip = []
+        computerWarFlip = []
+        
+    } else if (playerWarFlip[playerWarFlip.length - 1] < computerWarFlip[computerWarFlip.length - 1]) {
+      console.log("computer won war")
+      const computerWarWon = computerDeck.splice(0,5)
+      const playerWarLost = playerDeck.splice(0,5)
+      computerWarWon.forEach((card) => {
+        computerDeck.push(card)
+      })
+      playerWarLost.forEach((card) =>{
+        computerDeck.push(card)
+      })
+      console.log(playerDeck);
+      console.log(computerDeck);
+      playerFlip = []
+      computerFlip = []
+      playerWarFlip = []
+      computerWarFlip = []
+        
+    } else if (playerWarFlip[playerWarFlip.length - 1] === computerWarFlip[computerWarFlip.length - 1]) {
+      const playerDoubleWarCard = playerDeck[8]
+      playerDoubleWarFlip.push(playerDoubleWarCard.value)
+      const computerDoubleWarCard = computerDeck[8]
+      computerDoubleWarFlip.push(computerDoubleWarCard.value)
+      console.log(playerWarFlip);
+      console.log(computerWarFlip); 
+      if (playerDoubleWarFlip > computerDoubleWarFlip) {
+        console.log("player won war")
+        const computerDoubleWarLost = computerDeck.splice(0,10)
+        const playerDoubleWarWon = playerDeck.splice(0,10)
+        computerDoubleWarLost.forEach((card) => {
+          playerDeck.push(card)
+        })
+        playerDoubleWarWon.forEach((card) =>{
           playerDeck.push(card)
         })
         console.log(playerDeck);
@@ -166,74 +213,41 @@ function compare() {
         computerFlip = []
         playerWarFlip = []
         computerWarFlip = []
-        
-      } else if (playerWarFlip[playerWarFlip.length - 1] < computerWarFlip[computerWarFlip.length - 1]) {
-        console.log("computer won war")
-        const computerWarWon = computerDeck.splice(0,5)
-        const playerWarLost = playerDeck.splice(0,5)
-        computerWarWon.forEach((card) => {
+        playerDoubleWarFlip = []
+        computerDoubleWarFlip = []
+          
+      } else if (playerDoubleWarFlip[playerDoubleWarFlip - 1] < computerDoubleWarFlip[computerDoubleWarFlip - 1]) {
+        const computerDoubleWarWon = computerDeck.splice(0,10)
+        const playerDoubleWarLost = playerDeck.splice(0,10)
+        computerDoubleWarWon.forEach((card) => {
           computerDeck.push(card)
         })
-        playerWarLost.forEach((card) =>{
+        playerDoubleWarLost.forEach((card) =>{
           computerDeck.push(card)
-        })
+          })
         console.log(playerDeck);
         console.log(computerDeck);
         playerFlip = []
         computerFlip = []
         playerWarFlip = []
         computerWarFlip = []
-        
-      } else if (playerWarFlip[playerWarFlip.length - 1] === computerWarFlip[computerWarFlip.length - 1]) {
-        const playerDoubleWarCard = playerDeck[8]
-        playerDoubleWarFlip.push(playerDoubleWarCard.value)
-        const computerDoubleWarCard = computerDeck[8]
-        computerDoubleWarFlip.push(computerWarCardPicked.value)
-        console.log(playerWarFlip);
-        console.log(computerWarFlip); 
-        if (playerDoubleWarFlip > computerDoubleWarFlip) {
-          console.log("player won war")
-          const computerDoubleWarLost = computerDeck.splice(0,10)
-          const playerDoubleWarWon = playerDeck.splice(0,10)
-          computerDoubleWarLost.forEach((card) => {
-            playerDeck.push(card)
-          })
-          playerDoubleWarWon.forEach((card) =>{
-            playerDeck.push(card)
-          })
-          console.log(playerDeck);
-          console.log(computerDeck);
-          playerFlip = []
-          computerFlip = []
-          playerWarFlip = []
-          computerWarFlip = []
-          playerDoubleWarFlip = []
-          computerDoubleWarFlip = []
-          
-        } else if (playerDoubleWarFlip[playerDoubleWarFlip - 1] < computerDoubleWarFlip[computerDoubleWarFlip - 1]) {
-          const computerDoubleWarWon = computerDeck.splice(0,10)
-          const playerDoubleWarLost = playerDeck.splice(0,10)
-          computerDoubleWarWon.forEach((card) => {
-            computerDeck.push(card)
-          })
-          playerDoubleWarLost.forEach((card) =>{
-            computerDeck.push(card)
-          })
-          console.log(playerDeck);
-          console.log(computerDeck);
-          playerFlip = []
-          computerFlip = []
-          playerWarFlip = []
-          computerWarFlip = []
-          playerDoubleWarFlip = []
-          computerDoubleWarFlip = []
-        } else {
-
-        }
+        playerDoubleWarFlip = []
+        computerDoubleWarFlip = []
+      } else {
       }
+    }
   }
 }
-    
+
+function determineWinner() {
+  if ((playerDeck.length > 0) && (computerDeck.length = 0)) {
+    messageEl.textContent = "Rock Chalk! KU Won!"
+  } else if ((playerDeck.length = 0) && (computerDeck.length > 0)) {
+    messageEl.textContent = "Go Tigers! Mizzou Won!"
+  } else {
+    messageEl.textContent = "It's a tie!"
+  }
+}
 
 
 // compare()
