@@ -69,6 +69,7 @@ let playerDeckEl = document.getElementById("playerDeck")
 let playerFlipEl = document.getElementById("playerFlip")
 let computerDeckEl = document.getElementById("computerDeck")
 let computerFlipEl = document.getElementById("computerFlip")
+const messageEl = document.getElementById("message")
 
 // Event listeners
 document.getElementById("btn").addEventListener("click", handleClick)
@@ -112,8 +113,15 @@ function handleClick() {
     console.log(playerFlip);
     console.log(computerFlip)
     compare()
+  } else if ((playerDeck.length > 0) && (computerDeck.length = 0)) {
+    messageEl.textContent = "Rock Chalk! KU Won!"
+  } else if ((playerDeck.length = 0) && (computerDeck.length > 0)) {
+    messageEl.textContent = "Go Tigers! Mizzou Won!"
+  } else {
+    messageEl.textContent = "It's a tie!"
   }
 }
+
 function compare() {
   if (playerFlip[playerFlip.length - 1] > computerFlip[computerFlip.length - 1]) {
     const computerCardLost = computerDeck.splice(0,1)
