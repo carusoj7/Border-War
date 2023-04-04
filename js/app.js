@@ -56,6 +56,7 @@ const cards = [
 
 let playerDeck = []
 let computerDeck = []
+let warWinner = []
 let playerCardToRemove
 let computerCardToRemove
 // Cached element references
@@ -98,37 +99,41 @@ function deal() {
 }
 
 function handleClick() {
-    console.log(playerDeck)
-    console.log(computerDeck)
-    const playerCardPicked = playerDeck[0]
-    const computerCardPicked = computerDeck[0]
+    // console.log(playerDeck)
+    // console.log(computerDeck)
+    // const playerCardPicked = playerDeck[0]
+    // const computerCardPicked = computerDeck[0]
     render(playerCardPicked, computerCardPicked)
     compare()
     determineWinner()
 }
 
 function compare() {
+  console.log(playerDeck)
+  console.log(computerDeck)
   const playerCardPicked = playerDeck[0]
   const computerCardPicked = computerDeck[0]
-  const playerWarCardPicked = playerDeck[4]
-  const computerWarCardPicked = computerDeck[4]
-  const playerDoubleWarCard = playerDeck[8]
-  const computerDoubleWarCard = computerDeck[8]
+  console.log(playerCardPicked);
+  console.log(computerCardPicked);
+  render(playerCardPicked, computerCardPicked)
   if (playerCardPicked.value > computerCardPicked.value) {
-    playerDeck.push(computerDeck.shift(), playerDeck.shift())
-    console.log(playerCardPicked);
-    console.log(computerCardPicked);
-    console.log(playerDeck);
-    console.log(computerDeck);
+    playerDeck.push(computerDeck.shift(), playerDeck.shift(), ...warWinner)
     
   } else if (playerCardPicked.value < computerCardPicked.value) {
-    computerDeck.push(playerDeck.shift(), computerDeck.shift())
-    console.log(playerCardPicked);
-    console.log(computerCardPicked);
-    
+    computerDeck.push(playerDeck.shift(), computerDeck.shift(), ...warWinner)
   } else if (playerCardPicked.value === computerCardPicked.value)  {
-    // //here's where the if condition would be
-    // if ((playerDeck.length > 0) && (computerDeck.length < 4)) {
+    war() 
+  }
+console.log(playerDeck);
+console.log(computerDeck);
+}
+function war() {
+  warWinner.push(...computerDeck.splice(0, 4), ...playerDeck.splice(0, 4))
+  console.log("war winner", warWinner);
+compare()
+
+}
+// if ((playerDeck.length > 0) && (computerDeck.length < 4)) {
     //   console.log("player should win")
     //   playerDeck.push(computerDeck.splice(0, computerDeck.length))
     //   return
@@ -140,53 +145,7 @@ function compare() {
     //   //write computer win
     //   return
     // }
-  if (playerWarCardPicked.value > computerWarCardPicked.value) {
-    playerDeck.push(computerDeck.splice(0, 5), playerDeck.splice(0, 5))
-    render(playerWarCardPicked, computerWarCardPicked)
-    console.log('war');
-    console.log(playerWarCardPicked);
-    console.log(computerWarCardPicked);
-  
-  } else if (playerWarCardPicked.value < computerWarCardPicked.value) {
-  console.log("computer won war")
-  computerDeck.push(playerDeck.splice(0, 5), computerDeck.splice(0, 5))
-  render(playerWarCardPicked, computerWarCardPicked) 
-      console.log(playerDeck);
-      console.log(computerDeck);
-        
-  }
-}else if (playerWarCardPicked.value === computerWarCardPicked.value) {
-    console.log("Double war");
-      // if ((playerDeck.length > 0) && (computerDeck.length < 8)) {
-      //   console.log("player should win")
-      //   playerDeck.push(computerDeck.splice(0, computerDeck.length))
-        
-      // }
-      //   else if ((playerDeck.length < 8) && (computerDeck.length > 0)) {
-      //   console.log("computer should win")
-      //   computerDeck.push(playerDeck.splice(0, playerDeck.length))
-      //   //write computer win
-        
-      // }
-    if (playerDoubleWarCard.value > computerDoubleWarCard.value) {
-        console.log("player won double war")
-        playerDeck.push(computerDeck.splice(0, 8), playerDeck.splice(0, 8))
-        render(playerDoubleWarCard, computerDoubleWarCard)
-        console.log(playerDeck);
-        console.log(computerDeck);
-    } else if (playerDoubleWarCard.value < computerDoubleWarCard.value) {
-      console.log("computer won double war")
-        computerDeck.push(playerDeck.splice(0, 8), computerDeck.splice(0, 8))
-        render(playerDoubleWarCard, computerDoubleWarCard)
-        console.log(playerDeck);
-        console.log(computerDeck);
-    }
-  }
-}
-
-      
-          
-
+     
 
 function determineWinner() {
   console.log('determine winner')
