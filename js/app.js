@@ -4,53 +4,53 @@ const cards = [
   {card: "dK", value:13},
   {card: "dJ", value: 11},
   {card: "d10", value: 10},
-  {card: "d9", value: 9},
-  {card: "d8", value: 8},
-  {card: "d7", value: 7},
-  {card: "d6", value: 6},
-  {card: "d5", value: 5},
-  {card: "d4", value: 4},
-  {card: "d3", value: 3},
-  {card: "d2", value: 2},
+  {card: "d09", value: 9},
+  {card: "d08", value: 8},
+  {card: "d07", value: 7},
+  {card: "d06", value: 6},
+  {card: "d05", value: 5},
+  {card: "d04", value: 4},
+  {card: "d03", value: 3},
+  {card: "d02", value: 2},
   {card: "hA", value: 14},
   {card: "hQ", value: 12},
   {card: "hK", value: 13},
   {card: "hJ", value: 11},
   {card: "h10", value: 10},
-  {card: "h9", value: 9},
-  {card: "h8", value: 8},
-  {card: "h7", value: 7},
-  {card: "h6", value: 6},
-  {card: "h5", value: 5},
-  {card: "h4", value: 4},
-  {card: "h3", value: 3},
-  {card: "h2", value: 2},
+  {card: "h09", value: 9},
+  {card: "h08", value: 8},
+  {card: "h07", value: 7},
+  {card: "h06", value: 6},
+  {card: "h05", value: 5},
+  {card: "h04", value: 4},
+  {card: "h03", value: 3},
+  {card: "h02", value: 2},
   {card: "cA", value: 14},
   {card: "cQ", value: 12},
   {card: "cK", value: 13},
   {card: "cJ", value: 11},
   {card: "c10", value: 10},
-  {card: "c9", value: 9},
-  {card: "c8", value: 8},
-  {card: "c7", value: 7},
-  {card: "c6", value: 6},
-  {card: "c5", value: 5},
-  {card: "c4", value: 4},
-  {card: "c3", value: 3},
-  {card: "c2", value: 2},
+  {card: "c09", value: 9},
+  {card: "c08", value: 8},
+  {card: "c07", value: 7},
+  {card: "c06", value: 6},
+  {card: "c05", value: 5},
+  {card: "c04", value: 4},
+  {card: "c03", value: 3},
+  {card: "c02", value: 2},
   {card: "sA", value: 14},
   {card: "sQ", value: 12},
   {card: "sK", value: 13},
   {card: "sJ", value: 11},
   {card: "s10", value: 10},
-  {card: "s9", value: 9},
-  {card: "s8", value: 8},
-  {card: "s7", value: 7},
-  {card: "s6", value: 6},
-  {card: "s5", value: 5},
-  {card: "s4", value: 4},
-  {card: "s3", value: 3},
-  {card: "s2", value: 2},
+  {card: "s09", value: 9},
+  {card: "s08", value: 8},
+  {card: "s07", value: 7},
+  {card: "s06", value: 6},
+  {card: "s05", value: 5},
+  {card: "s04", value: 4},
+  {card: "s03", value: 3},
+  {card: "s02", value: 2},
 ]
 // Declare deck variables
 
@@ -78,8 +78,7 @@ init()
 
 function init() {
   shuffle()
-  
-  // render()
+  render()
 }
 
 function shuffle() {
@@ -113,6 +112,7 @@ function handleClick() {
     computerFlip.push(computerCardPicked.value)
     console.log(playerFlip);
     console.log(computerFlip)
+    render(playerCardPicked, computerCardPicked)
     compare()
     cleanArrays()
     determineWinner()
@@ -148,6 +148,7 @@ function compare() {
     playerWarFlip.push(playerWarCardPicked.value)
     const computerWarCardPicked = computerDeck[4]
     computerWarFlip.push(computerWarCardPicked.value)
+    render(playerWarCardPicked, computerWarCardPicked)
     console.log('war');
     console.log(playerWarFlip);
     console.log(computerWarFlip);
@@ -236,10 +237,14 @@ function cleanArrays() {
   computerDoubleWarFlip = []
 }
 
-// compare()
-// function render() {
-//   if (playerFlip.length) {  
-//     playerDeckEl.classList.remove("outline")
-    
-//   }
-// }
+
+function render(playerCardPicked, computerCardPicked) {
+  console.log("in render");
+  if (playerFlip.length) {  
+    playerFlipEl.classList.remove("outline")
+    playerFlipEl.classList.add(playerCardPicked.card)
+  } if (computerFlip.length) {
+    computerFlipEl.classList.remove("outline")
+    computerFlipEl.classList.add(computerCardPicked.card)
+  }
+} 
