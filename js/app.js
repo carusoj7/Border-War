@@ -69,6 +69,7 @@ const messageEl = document.getElementById("message")
 // Event listeners
 document.getElementById("btn").addEventListener("click", handleClick)
 document.getElementById("resetBtn").addEventListener("click", init)
+document.getElementById("warBtn").addEventListener("click", handleClickWar)
 // Functions
 init()
 
@@ -79,9 +80,8 @@ function init() {
   computerCardEl.classList.remove(computerCardEl.card)
   computerCardEl.classList.remove(computerCardToRemove)
   computerCardEl.classList.add("outline")
-
+  messageEl.textContent = "Let's play War!"
   shuffle()
-  
 }
 
 function shuffle() {
@@ -125,21 +125,30 @@ function compare() {
     if (playerCardPicked.value > computerCardPicked.value) {
     playerDeck.push(computerDeck.shift(), playerDeck.shift(), ...warWinner)
     warWinner = []
+    messageEl.textContent = "KU wins hand!"
     } else if (playerCardPicked.value < computerCardPicked.value) {
     computerDeck.push(playerDeck.shift(), computerDeck.shift(), ...warWinner)
     warWinner = []
+    messageEl.textContent = "Mizzou wins hand!"
     } else if (playerCardPicked.value === computerCardPicked.value)  {
-    war() 
+      btn.disable = true
+      messageEl.textContent = "Let's go to War! Click War!" 
     }
   } else
 console.log(playerDeck);
 console.log(computerDeck);
 }
-function war() {
+function handleClickWar() {
+  const playerCardPicked = playerDeck[0]
+  const computerCardPicked = computerDeck[0]
+  if (playerCardPicked.value !== computerCardPicked.value) {
+    warBtn.disable = true
+  }
+  if (playerCardPicked.value === computerCardPicked.value) {
   warWinner.push(...computerDeck.splice(0, 4), ...playerDeck.splice(0, 4))
   console.log("war winner", warWinner);
-compare()
-
+  compare()
+  }
 }
 // if ((playerDeck.length > 0) && (computerDeck.length < 4)) {
     //   console.log("player should win")
@@ -158,10 +167,14 @@ compare()
 function determineWinner() {
   console.log('determine winner')
   if ((playerDeck.length > 0) && (computerDeck.length === 0)) {
-    messageEl.textContent = "Rock Chalk! KU Won!"
+    playerCardEl.classList.add("outline")
+    computerCardEl.classList.add("outline")
+    messageEl.textContent = "Game Over! Rock Chalk! KU Won!"
   }
   if ((playerDeck.length === 0) && (computerDeck.length > 0)) {
-    messageEl.textContent = "Go Tigers! Mizzou Won!"
+    messageEl.textContent = "Game Over! Go Tigers! Mizzou Won!"
+    computerCardEl.classList.add("outline")
+    playerCardEl.classList.add("outline")
   }
 }
 
