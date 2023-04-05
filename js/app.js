@@ -68,11 +68,18 @@ const messageEl = document.getElementById("message")
 
 // Event listeners
 document.getElementById("btn").addEventListener("click", handleClick)
-// document.getElementById("resetBtn").addEventListener("click", )
+document.getElementById("resetBtn").addEventListener("click", init)
 // Functions
 init()
 
 function init() {
+  playerCardEl.classList.remove(playerCardEl.card)
+  playerCardEl.classList.remove(playerCardToRemove)
+  playerCardEl.classList.add("outline")
+  computerCardEl.classList.remove(computerCardEl.card)
+  computerCardEl.classList.remove(computerCardToRemove)
+  computerCardEl.classList.add("outline")
+
   shuffle()
   
 }
@@ -100,11 +107,6 @@ function deal() {
 }
 
 function handleClick() {
-    // console.log(playerDeck)
-    // console.log(computerDeck)
-    // const playerCardPicked = playerDeck[0]
-    // const computerCardPicked = computerDeck[0]
-    // render(playerCardPicked, computerCardPicked)
     render(playerCard, computerCard)
     compare()
     determineWinner()
@@ -129,7 +131,7 @@ function compare() {
     } else if (playerCardPicked.value === computerCardPicked.value)  {
     war() 
     }
-  } else ()
+  } else
 console.log(playerDeck);
 console.log(computerDeck);
 }
@@ -176,8 +178,4 @@ function render(playerCard, computerCard) {
     computerCardEl.classList.remove(computerCardToRemove)
     computerCardToRemove = computerCard.card
   }
-}
-
-function reset() {
-  console.log("in reset");
 }
