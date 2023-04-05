@@ -57,23 +57,24 @@ const cards = [
 let playerDeck = []
 let computerDeck = []
 let warWinner = []
-let playerCardToRemove
+let playerCardToRemove  
 let computerCardToRemove
 // Cached element references
 let playerDeckEl = document.getElementById("playerDeck")
-let playerFlipEl = document.getElementById("playerFlip")
+let playerCardEl = document.getElementById("playerCard")
 let computerDeckEl = document.getElementById("computerDeck")
-let computerFlipEl = document.getElementById("computerFlip")
+let computerCardEl = document.getElementById("computerCard")
 const messageEl = document.getElementById("message")
 
 // Event listeners
 document.getElementById("btn").addEventListener("click", handleClick)
+// document.getElementById("resetBtn").addEventListener("click", )
 // Functions
 init()
 
 function init() {
   shuffle()
-  render()
+  
 }
 
 function shuffle() {
@@ -103,7 +104,8 @@ function handleClick() {
     // console.log(computerDeck)
     // const playerCardPicked = playerDeck[0]
     // const computerCardPicked = computerDeck[0]
-    render(playerCardPicked, computerCardPicked)
+    // render(playerCardPicked, computerCardPicked)
+    render(playerCard, computerCard)
     compare()
     determineWinner()
 }
@@ -111,19 +113,23 @@ function handleClick() {
 function compare() {
   console.log(playerDeck)
   console.log(computerDeck)
+  determineWinner()
   const playerCardPicked = playerDeck[0]
   const computerCardPicked = computerDeck[0]
-  console.log(playerCardPicked);
-  console.log(computerCardPicked);
-  render(playerCardPicked, computerCardPicked)
-  if (playerCardPicked.value > computerCardPicked.value) {
+  console.log(playerCardPicked)
+  console.log(computerCardPicked)
+  if(playerCardPicked && computerCardPicked){
+    render(playerCardPicked, computerCardPicked)
+    if (playerCardPicked.value > computerCardPicked.value) {
     playerDeck.push(computerDeck.shift(), playerDeck.shift(), ...warWinner)
-    
-  } else if (playerCardPicked.value < computerCardPicked.value) {
+    warWinner = []
+    } else if (playerCardPicked.value < computerCardPicked.value) {
     computerDeck.push(playerDeck.shift(), computerDeck.shift(), ...warWinner)
-  } else if (playerCardPicked.value === computerCardPicked.value)  {
+    warWinner = []
+    } else if (playerCardPicked.value === computerCardPicked.value)  {
     war() 
-  }
+    }
+  } else ()
 console.log(playerDeck);
 console.log(computerDeck);
 }
@@ -145,7 +151,7 @@ compare()
     //   //write computer win
     //   return
     // }
-     
+  
 
 function determineWinner() {
   console.log('determine winner')
@@ -157,13 +163,21 @@ function determineWinner() {
   }
 }
 
-function render(playerCardPicked, computerCardPicked) {
+function render(playerCard, computerCard) {
   console.log("in render");
-  if (playerFlip.length) {  
-    playerFlipEl.classList.remove("outline")
-    playerFlipEl.classList.add(playerCardPicked.card)
-  } if (computerFlip.length) {
-    computerFlipEl.classList.remove("outline")
-    computerFlipEl.classList.add(computerCardPicked.card)
+  if (playerCard) {  
+    playerCardEl.classList.remove("outline")
+    playerCardEl.classList.remove(playerCardToRemove)
+    playerCardEl.classList.add(playerCard.card)
+    playerCardToRemove = playerCard.card
+  } if (computerCard) {
+    computerCardEl.classList.remove("outline")
+    computerCardEl.classList.add(computerCard.card)
+    computerCardEl.classList.remove(computerCardToRemove)
+    computerCardToRemove = computerCard.card
   }
+}
+
+function reset() {
+  console.log("in reset");
 }
