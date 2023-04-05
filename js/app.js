@@ -53,7 +53,6 @@ const cards = [
   {card: "s02", value: 2},
 ]
 // Declare deck variables
-
 let playerDeck = []
 let computerDeck = []
 let warWinner = []
