@@ -134,10 +134,9 @@ function compare() {
       btn.disable = true
       messageEl.textContent = "Let's go to War! Click War!" 
     }
-  } else
-console.log(playerDeck);
-console.log(computerDeck);
+  } else {}
 }
+
 function handleClickWar() {
   const playerCardPicked = playerDeck[0]
   const computerCardPicked = computerDeck[0]
@@ -150,22 +149,10 @@ function handleClickWar() {
   compare()
   }
 }
-// if ((playerDeck.length > 0) && (computerDeck.length < 4)) {
-    //   console.log("player should win")
-    //   playerDeck.push(computerDeck.splice(0, computerDeck.length))
-    //   return
-    // }
-      
-    // } else if ((playerDeck.length < 4) && (computerDeck.length > 0)) {
-    //   console.log("computer should win")
-    //   computerDeck.push(playerDeck.splice(0, playerDeck.length))
-    //   //write computer win
-    //   return
-    // }
-  
 
 function determineWinner() {
-  console.log('determine winner')
+  console.log(playerDeck)
+  console.log(computerDeck);
   if ((playerDeck.length > 0) && (computerDeck.length === 0)) {
     playerCardEl.classList.add("outline")
     computerCardEl.classList.add("outline")
@@ -179,7 +166,6 @@ function determineWinner() {
 }
 
 function render(playerCard, computerCard) {
-  console.log("in render");
   if (playerCard) {  
     playerCardEl.classList.remove("outline")
     playerCardEl.classList.remove(playerCardToRemove)
