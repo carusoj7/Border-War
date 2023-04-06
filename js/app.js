@@ -106,9 +106,8 @@ function deal() {
 }
 
 function handleClick() {
-    render(playerCard, computerCard)
+    render()
     compare()
-    determineWinner()
 }
 
 function compare() {
