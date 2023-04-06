@@ -71,6 +71,7 @@ let computerScoreEl = document.getElementById("computer-score")
 document.getElementById("btn").addEventListener("click", handleClick)
 document.getElementById("resetBtn").addEventListener("click", init)
 document.getElementById("warBtn").addEventListener("click", handleClickWar)
+document.getElementById("secretBtn").addEventListener("click", endGame)
 // Functions
 init()
 
@@ -81,7 +82,7 @@ function init() {
   computerCardEl.classList.remove(computerCardEl.card)
   computerCardEl.classList.remove(computerCardToRemove)
   computerCardEl.classList.add("outline")
-  messageEl.textContent = "Let's play War!"
+  messageEl.textContent = "Click Flip Card to Begin"
   shuffle()
   renderScore()
 }
@@ -134,7 +135,7 @@ function compare() {
     messageEl.textContent = "Mizzou Wins Hand!"
     } else if (playerCardPicked.value === computerCardPicked.value)  {
       btn.disable = true
-      messageEl.textContent = "We Have A War! Click War!" 
+      messageEl.textContent = "We Have A War! Click War!"
     }
   } 
 }
@@ -155,20 +156,23 @@ function handleClickWar() {
 function determineWinner() {
   console.log(playerDeck)
   console.log(computerDeck);
-  if ((playerDeck.length > 0) && (computerDeck.length === 0)) {
-    messageEl.textContent = "Game Over! Rock Chalk! KU Won!"
+  if ((playerDeck.length > 0) && (computerDeck.length < 1)) {
+    messageEl.textContent = "Game Over! Jayhawks Win!"
     playerCardEl.classList.remove(playerCardToRemove)
     computerCardEl.classList.remove(computerCardToRemove)
     playerCardEl.classList.add("outline")
     computerCardEl.classList.add("outline")
-    messageEl.textContent = "Game Over! Rock Chalk! KU Won!"
+    playerScoreEl.textContent = 52
+  computerScoreEl.textContent = 0
   }
-  if ((playerDeck.length === 0) && (computerDeck.length > 0)) {
-    messageEl.textContent = "Game Over! Go Tigers! Mizzou Won!"
+  if ((playerDeck.length < 1) && (computerDeck.length > 0)) {
+    messageEl.textContent = "Game Over! Tigers Win!"
     playerCardEl.classList.remove(playerCardToRemove)
     computerCardEl.classList.remove(computerCardToRemove)
     playerCardEl.classList.add("outline")
     computerCardEl.classList.add("outline")
+    playerScoreEl.textContent = 0
+    computerScoreEl.textContent = 52
   }
 }
 
@@ -189,4 +193,16 @@ function render(playerCard, computerCard) {
 function renderScore() {
   playerScoreEl.textContent = playerDeck.length
   computerScoreEl.textContent = computerDeck.length
+}
+
+function endGame() {
+  playerDeck.length = 52
+  computerDeck.length = 0
+  playerScoreEl.textContent = 52
+  computerScoreEl.textContent = 0
+  playerCardEl.classList.remove(playerCardToRemove)
+  computerCardEl.classList.remove(computerCardToRemove)
+  playerCardEl.classList.add("outline")
+  computerCardEl.classList.add("outline")
+  messageEl.textContent = "Game Over! Jayhawks Win!"
 }

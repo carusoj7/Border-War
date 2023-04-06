@@ -26,6 +26,8 @@ Git
 ## Credits: 
 Fisher-Yates Shuffle https://www.geeksforgeeks.org/shuffle-a-given-array-using-fisher-yates-shuffle-algorithm/
 
+Background image: https://clutchpoints.com/college-basketball-odds-kansas-vs-missouri-prediction-odds-and-pick-12-10-2022
+
 ## Next Steps:
 
 Add audio for when either Mizzou or KU wins. The audio played would be the winning school’s fight song.
