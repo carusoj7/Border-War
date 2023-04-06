@@ -124,16 +124,16 @@ function compare() {
     if (playerCardPicked.value > computerCardPicked.value) {
     playerDeck.push(computerDeck.shift(), playerDeck.shift(), ...warWinner)
     warWinner = []
-    messageEl.textContent = "KU wins hand!"
+    messageEl.textContent = "KU Wins Hand!"
     } else if (playerCardPicked.value < computerCardPicked.value) {
     computerDeck.push(playerDeck.shift(), computerDeck.shift(), ...warWinner)
     warWinner = []
-    messageEl.textContent = "Mizzou wins hand!"
+    messageEl.textContent = "Mizzou Wins Hand!"
     } else if (playerCardPicked.value === computerCardPicked.value)  {
       btn.disable = true
-      messageEl.textContent = "Let's go to War! Click War!" 
+      messageEl.textContent = "We Have A War! Click War!" 
     }
-  } else {}
+  } 
 }
 
 function handleClickWar() {
@@ -153,14 +153,18 @@ function determineWinner() {
   console.log(playerDeck)
   console.log(computerDeck);
   if ((playerDeck.length > 0) && (computerDeck.length === 0)) {
+    playerCardEl.classList.remove(playerCardToRemove)
+    computerCardEl.classList.remove(computerCardToRemove)
     playerCardEl.classList.add("outline")
     computerCardEl.classList.add("outline")
     messageEl.textContent = "Game Over! Rock Chalk! KU Won!"
   }
   if ((playerDeck.length === 0) && (computerDeck.length > 0)) {
     messageEl.textContent = "Game Over! Go Tigers! Mizzou Won!"
-    computerCardEl.classList.add("outline")
+    playerCardEl.classList.remove(playerCardToRemove)
+    computerCardEl.classList.remove(computerCardToRemove)
     playerCardEl.classList.add("outline")
+    computerCardEl.classList.add("outline")
   }
 }
 
@@ -172,8 +176,8 @@ function render(playerCard, computerCard) {
     playerCardToRemove = playerCard.card
   } if (computerCard) {
     computerCardEl.classList.remove("outline")
-    computerCardEl.classList.add(computerCard.card)
     computerCardEl.classList.remove(computerCardToRemove)
+    computerCardEl.classList.add(computerCard.card)
     computerCardToRemove = computerCard.card
   }
 }

@@ -1,5 +1,9 @@
 body {
   background-color: #696969;
+  background-image: url(/css/background\ image/BorderWar.png);
+  background-size: 700px;
+  background-position: top;
+  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,6 +16,7 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-bottom: -300px
 }
 
 .card {
@@ -19,7 +24,7 @@ body {
 }
 
 .card.outline {
-  border: 0.15em dashed #202d7a;
+  border: 0.15em dashed #fefefe;
 }
 
 .card.shadow {
@@ -27,9 +32,27 @@ body {
 }
 
 .btn {
+  display: center;
   margin-top: 2vh;
   color: white;
-  background-color: #202d7a;
+  background-color: #111dc6;
   font-weight: bold;
-  border: 2px solid #202d7a;
+  border: 2px solid #cacbd1;
+  margin-right: 30px;
+
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+h2 {
+  display: flex;
+  font-size: 40px;
+  margin-bottom: -350px;
+  background: #111dc6;
+  color: white;
 }
