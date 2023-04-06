@@ -153,6 +153,7 @@ function determineWinner() {
   console.log(playerDeck)
   console.log(computerDeck);
   if ((playerDeck.length > 0) && (computerDeck.length === 0)) {
+    messageEl.textContent = "Game Over! Rock Chalk! KU Won!"
     playerCardEl.classList.remove(playerCardToRemove)
     computerCardEl.classList.remove(computerCardToRemove)
     playerCardEl.classList.add("outline")
