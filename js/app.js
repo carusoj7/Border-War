@@ -64,6 +64,8 @@ let playerCardEl = document.getElementById("playerCard")
 let computerDeckEl = document.getElementById("computerDeck")
 let computerCardEl = document.getElementById("computerCard")
 const messageEl = document.getElementById("message")
+let playerScoreEl = document.getElementById("player-score")
+let computerScoreEl = document.getElementById("computer-score")
 
 // Event listeners
 document.getElementById("btn").addEventListener("click", handleClick)
@@ -81,6 +83,7 @@ function init() {
   computerCardEl.classList.add("outline")
   messageEl.textContent = "Let's play War!"
   shuffle()
+  renderScore()
 }
 
 function shuffle() {
@@ -108,6 +111,7 @@ function deal() {
 function handleClick() {
     render()
     compare()
+    renderScore()
 }
 
 function compare() {
@@ -180,4 +184,9 @@ function render(playerCard, computerCard) {
     computerCardEl.classList.add(computerCard.card)
     computerCardToRemove = computerCard.card
   }
+}
+
+function renderScore() {
+  playerScoreEl.textContent = playerDeck.length
+  computerScoreEl.textContent = computerDeck.length
 }
