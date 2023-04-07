@@ -36,6 +36,6 @@ Background image: https://clutchpoints.com/college-basketball-odds-kansas-vs-mis
 ## Next Steps:
 
 * Add audio for when either Mizzou or KU wins. The audio played would be the winning school’s fight song.
-* Make the game compatible on mobile devices
+* Make the game compatible with mobile devices
 * Add two divs to display the hostage cards when war occurs.
 
