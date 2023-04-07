@@ -30,6 +30,20 @@ body {
   box-shadow: 7px 7px 7px 0 rgba(197, 0, 0, 0.95) !important;
 }
 
+#secretBtn {
+  display: flex;
+  justify-content: center;
+  width: 60px;
+  height: 30px;
+  font-size: 9px;
+  text-align: center;
+  margin-right: 1000px;
+  margin-bottom: -200px;
+  background-color: transparent;
+  opacity: .8;
+  color: white;
+}
+
 .btn {
   display: center;
   margin-top: 2vh;
@@ -42,19 +56,6 @@ body {
 
 }
 
-#secretBtn {
-  display: flex;
-  justify-content: center;
-  width: 60px;
-  height: 30px;
-  font-size: 9px;
-  text-align: center;
-  margin-right: 1000px;
-  margin-bottom: -200px;
-  background: white .8;
-  color: white;
-
-}
 
 .btn-container {
   display: flex;
