@@ -193,7 +193,7 @@ function render(kuCard, mizzouCard) {
 
 function renderScore() {
   kuScoreEl.textContent = kuDeck.length
-  mizzouScoreEl.textContent = mizzouDeck.length,
+  mizzouScoreEl.textContent = mizzouDeck.length
 }
 
 function endGame() {
