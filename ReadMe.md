@@ -8,7 +8,7 @@
 Create a browser-based game that models the card game “War” allowing the user to decide which deck to root for.
 
 ## Game Rules
-The deck is divided evenly between both teams. Each team then displays a card. Whichever card displayed is higher than the other, both cards are put into the winner's deck. If there is a tie, three cards are removed from each team's deck and then a 4th card is turned to determine a winner of that hand. The game ends when one deck runs out of cards.
+The deck is divided evenly between both teams. Each team then displays a card. Whichever card displayed is higher than the other, both cards are put into the winner's deck. War happens when there is a tie. Three cards are removed from each team's deck and then a 4th card is turned to determine a winner of that hand. If those turn cards are a tie then we replay war again. The game ends when one deck runs out of cards or does not have enough cards to play war.
 
 ## To Play The Game:
 
@@ -23,7 +23,7 @@ There are two reasons I wanted to create the game of war. It’s the first card 
 * JavaScript
 * CSS
 * HTML
-* Github
+* GitHub
 * cardstarter.css
 * confetti.css
 
