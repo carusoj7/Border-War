@@ -23,21 +23,21 @@ There are two reasons I wanted to create the game of war. It’s the first card 
 * JavaScript
 * CSS
 * HTML
-* GitHub
+* Gitub
 * cardstarter.css
 * confetti.css
 
 
 ## Credits: 
-Fisher-Yates Shuffle https://www.geeksforgeeks.org/shuffle-a-given-array-using-fisher-yates-shuffle-algorithm/
+[Fisher-Yates Shuffle](https://www.geeksforgeeks.org/shuffle-a-given-array-using-fisher-yates-shuffle-algorithm/)
 
-Background image: https://clutchpoints.com/college-basketball-odds-kansas-vs-missouri-prediction-odds-and-pick-12-10-2022
+[KU/Mizzou Background image](https://clutchpoints.com/college-basketball-odds-kansas-vs-missouri-prediction-odds-and-pick-12-10-2022)
 
-KU logo image: https://1000logos.net/kansas-jayhawks-logo/
+[KU logo image](https://1000logos.net/kansas-jayhawks-logo/)
 
-Mizzou logo image: https://branditechture.agency/brand-logos/download/mizzou-missouri-tigers/
+[Mizzou logo image](https://branditechture.agency/brand-logos/download/mizzou-missouri-tigers/)
 
-Favicon image: https://en.wikipedia.org/wiki/Border_War_%28Kansas%E2%80%93Missouri_rivalry%29
+[Favicon image](https://en.wikipedia.org/wiki/Border_War_%28Kansas%E2%80%93Missouri_rivalry%29)
 
 ## Next Steps:
 
