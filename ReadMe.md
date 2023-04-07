@@ -23,7 +23,7 @@ There are two reasons I wanted to create the game of war. It’s the first card 
 * JavaScript
 * CSS
 * HTML
-* Gitub
+* GitHub
 * cardstarter.css
 * confetti.css
 
