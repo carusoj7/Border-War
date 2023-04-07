@@ -12,7 +12,7 @@ The deck is divided evenly between both teams. Each team then displays a card. W
 
 ## To Play The Game:
 
-Click [here](https://borderwar.netlify.app/) to play!
+# Click [here](https://borderwar.netlify.app/) to play!
 
 ## Motivation
 
