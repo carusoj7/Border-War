@@ -33,6 +33,10 @@ Fisher-Yates Shuffle https://www.geeksforgeeks.org/shuffle-a-given-array-using-f
 
 Background image: https://clutchpoints.com/college-basketball-odds-kansas-vs-missouri-prediction-odds-and-pick-12-10-2022
 
+KU logo image: https://1000logos.net/kansas-jayhawks-logo/
+
+Mizzou logo image: https://branditechture.agency/brand-logos/download/mizzou-missouri-tigers/
+
 ## Next Steps:
 
 * Add audio for when either Mizzou or KU wins. The audio played would be the winning school’s fight song.
