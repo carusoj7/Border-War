@@ -208,7 +208,7 @@ function endGame() {
   mizzouDeckEl.classList.remove("back-mizzou-tiger-logo", "shadow")
   mizzouDeckEl.classList.add("outline")
   messageEl.textContent = "Game Over! Jayhawks Win!"
-  btn.disable = false
+  btn.hidden = false
   confetti.start(1000)
 }
 
