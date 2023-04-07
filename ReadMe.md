@@ -37,6 +37,8 @@ KU logo image: https://1000logos.net/kansas-jayhawks-logo/
 
 Mizzou logo image: https://branditechture.agency/brand-logos/download/mizzou-missouri-tigers/
 
+Favicon image: https://en.wikipedia.org/wiki/Border_War_%28Kansas%E2%80%93Missouri_rivalry%29
+
 ## Next Steps:
 
 * Add audio for when either Mizzou or KU wins. The audio played would be the winning school’s fight song.
