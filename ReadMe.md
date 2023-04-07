@@ -1,6 +1,6 @@
  # **Border War**
 
-![image](/css/background%20image/border-war-game.png)
+![image](/images/game%20images/border-war-game.png)
 
 
 ## Objective
@@ -8,7 +8,7 @@
 Create a browser-based game that models the card game “War” allowing the user to decide which deck to root for.
 
 ## Game Rules
-Each deck starts with 26 cards. Whichever card displayed is higher than the other, then both cards are put into the winner's deck. If there is a tie, three cards are removed from each deck and each team turns a 4th card to determine a winner for the remaining cards. Whichever deck runs out of cards wins!
+The deck is divided evenly between both teams. Each team then displays a card. Whichever card displayed is higher than the other, both cards are put into the winner's deck. If there is a tie, three cards are removed from each team's deck and then a 4th card is turned to determine a winner of that hand. Whichever deck runs out of cards wins!
 
 ## To Play The Game:
 
@@ -25,7 +25,7 @@ There are two reasons I wanted to create the game of war. It’s the first card 
 * HTML
 * Git
 * cardstarter.css
-*
+* confetti.css
 
 
 ## Credits: 
