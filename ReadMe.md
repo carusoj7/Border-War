@@ -1,11 +1,14 @@
  # **Border War**
 
-
+![image](/css/background%20image/border-war-game.png)
 
 
 ## Objective
 
 Create a browser-based game that models the card game “War” allowing the user to decide which deck to root for.
+
+## Game Rules
+Each deck starts with 26 cards. Whichever card displayed is higher than the other, then both cards are put into the winner's deck. If there is a tie, three cards are removed from each deck and each team turns a 4th card to determine a winner for the remaining cards. Whichever deck runs out of cards wins!
 
 ## To Play The Game:
 
@@ -13,14 +16,16 @@ Click [here](https://borderwar.netlify.app/) to play!
 
 ## Motivation
 
-There are two reasons I wanted to create the game of war. It’s the first card game I ever learned from my grandmother. It’s what spawned my interest in learning many more card games, and it’s the first game I teach someone that wants to learn how to play any game of cards. The second reason is due to my theme of KU vs. Mizzou. The Border Battle is a historical rivalry and to display it in a card game just adds another dimension to it.
+There are two reasons I wanted to create the game of war. It’s the first card game I ever learned from my grandmother. It’s what spawned my interest in learning many more card games, and it’s the first game I teach someone that wants to learn how to play any game of cards. The second reason is due to my theme of KU vs. Mizzou. As a KU grad, the rivalry with Mizzou runs deep so to display it in a card game was special to create.
 
 ## Technology Implemented:
 
-JavaScript
-CSS
-HTML
-Git
+* JavaScript
+* CSS
+* HTML
+* Git
+* cardstarter.css
+*
 
 
 ## Credits: 
@@ -30,7 +35,7 @@ Background image: https://clutchpoints.com/college-basketball-odds-kansas-vs-mis
 
 ## Next Steps:
 
-Add audio for when either Mizzou or KU wins. The audio played would be the winning school’s fight song.
-Make the game compatible on mobile devices
-Add two divs to display the hostage cards when war occurs.
-Add a counter to keep track of the number of cards in each deck
+* Add audio for when either Mizzou or KU wins. The audio played would be the winning school’s fight song.
+* Make the game compatible on mobile devices
+* Add two divs to display the hostage cards when war occurs.
+

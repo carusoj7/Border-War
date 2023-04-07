@@ -53,39 +53,41 @@ const cards = [
   { card: "s02", value: 2 },
 ]
 // Declare deck variables
-let playerDeck = []
-let computerDeck = []
+let kuDeck = []
+let mizzouDeck = []
 let warWinner = []
-let playerCardToRemove
-let computerCardToRemove
+let kuCardToRemove
+let mizzouCardToRemove
+
 // Cached element references
-let playerDeckEl = document.getElementById("playerDeck")
-let playerCardEl = document.getElementById("playerCard")
-let computerDeckEl = document.getElementById("computerDeck")
-let computerCardEl = document.getElementById("computerCard")
+let kuDeckEl = document.getElementById("kuDeck")
+let kuCardEl = document.getElementById("kuCard")
+let mizzouDeckEl = document.getElementById("mizzouDeck")
+let mizzouCardEl = document.getElementById("mizzouCard")
 const messageEl = document.getElementById("message")
-let playerScoreEl = document.getElementById("player-score")
-let computerScoreEl = document.getElementById("computer-score")
+let kuScoreEl = document.getElementById("ku-score")
+let mizzouScoreEl = document.getElementById("mizzou-score")
 
 // Event listeners
 document.getElementById("btn").addEventListener("click", handleClick)
 document.getElementById("resetBtn").addEventListener("click", init)
 document.getElementById("warBtn").addEventListener("click", handleClickWar)
 document.getElementById("secretBtn").addEventListener("click", endGame)
+
 // Functions
 init()
 
 function init() {
-  playerCardEl.classList.remove(playerCardEl.card)
-  playerCardEl.classList.remove(playerCardToRemove)
-  playerCardEl.classList.add("outline")
-  computerDeckEl.classList.remove("outline")
-  computerDeckEl.classList.add("back-mizzou-tiger-logo","shadow")
-  playerDeckEl.classList.remove("outline")
-  playerDeckEl.classList.add("back-jayhawk","shadow")
-  computerCardEl.classList.remove(computerCardEl.card)
-  computerCardEl.classList.remove(computerCardToRemove)
-  computerCardEl.classList.add("outline")
+  kuCardEl.classList.remove(kuCardEl.card)
+  kuCardEl.classList.remove(kuCardToRemove)
+  kuCardEl.classList.add("outline")
+  mizzouDeckEl.classList.remove("outline")
+  mizzouDeckEl.classList.add("back-mizzou-tiger-logo", "shadow")
+  kuDeckEl.classList.remove("outline")
+  kuDeckEl.classList.add("back-jayhawk", "shadow")
+  mizzouCardEl.classList.remove(mizzouCardEl.card)
+  mizzouCardEl.classList.remove(mizzouCardToRemove)
+  mizzouCardEl.classList.add("outline")
   warBtn.hidden = true
   messageEl.textContent = "Click Flip Card to Begin"
   shuffle()
@@ -103,13 +105,13 @@ function shuffle() {
 }
 
 function deal() {
-  playerDeck = []
-  computerDeck = []
+  kuDeck = []
+  mizzouDeck = []
   cards.forEach((card, i) => {
     if (i % 2 === 1) {
-      playerDeck.push(card)
+      kuDeck.push(card)
     } else {
-      computerDeck.push(card)
+      mizzouDeck.push(card)
     }
   })
 }
@@ -120,26 +122,22 @@ function handleClick() {
 }
 
 function compare() {
-  console.log(playerDeck)
-  console.log(computerDeck)
-  const playerCardPicked = playerDeck[0]
-  const computerCardPicked = computerDeck[0]
-  console.log(playerCardPicked)
-  console.log(computerCardPicked)
+  const kuCardPicked = kuDeck[0]
+  const mizzouCardPicked = mizzouDeck[0]
   btn.hidden = false
   warBtn.hidden = true
-  if (playerCardPicked && computerCardPicked) {
-    render(playerCardPicked, computerCardPicked)
+  if (kuCardPicked && mizzouCardPicked) {
+    render(kuCardPicked, mizzouCardPicked)
 
-    if (playerCardPicked.value > computerCardPicked.value) {
-      playerDeck.push(computerDeck.shift(), playerDeck.shift(), ...warWinner)
+    if (kuCardPicked.value > mizzouCardPicked.value) {
+      kuDeck.push(mizzouDeck.shift(), kuDeck.shift(), ...warWinner)
       warWinner = []
       messageEl.textContent = "KU Wins Hand!"
-    } else if (playerCardPicked.value < computerCardPicked.value) {
-      computerDeck.push(playerDeck.shift(), computerDeck.shift(), ...warWinner)
+    } else if (kuCardPicked.value < mizzouCardPicked.value) {
+      mizzouDeck.push(kuDeck.shift(), mizzouDeck.shift(), ...warWinner)
       warWinner = []
       messageEl.textContent = "Mizzou Wins Hand!"
-    } else if (playerCardPicked.value === computerCardPicked.value) {
+    } else if (kuCardPicked.value === mizzouCardPicked.value) {
       btn.hidden = true
       messageEl.textContent = "We Have A War! Click War!"
       warBtn.hidden = false
@@ -150,66 +148,63 @@ function compare() {
 }
 
 function handleClickWar() {
-  const playerCardPicked = playerDeck[0]
-  const computerCardPicked = computerDeck[0]
-  if (playerCardPicked.value !== computerCardPicked.value) {
+  const kuCardPicked = kuDeck[0]
+  const mizzouCardPicked = mizzouDeck[0]
+  if (kuCardPicked.value !== mizzouCardPicked.value) {
     warBtn.disable = true
   }
-  if (playerCardPicked.value === computerCardPicked.value) {
-    warWinner.push(...computerDeck.splice(0, 4), ...playerDeck.splice(0, 4))
-    console.log("war winner", warWinner);
+  if (kuCardPicked.value === mizzouCardPicked.value) {
+    warWinner.push(...mizzouDeck.splice(0, 4), ...kuDeck.splice(0, 4))
     compare()
   }
 }
 
 function determineWinner() {
-  console.log(playerDeck)
-  console.log(computerDeck);
-  if ((playerDeck.length > 0) && (computerDeck.length < 1)) {
+  if ((kuDeck.length > 0) && (mizzouDeck.length < 1)) {
     messageEl.textContent = "Game Over! Jayhawks Win!"
-    playerScoreEl.textContent = 52
-    computerScoreEl.textContent = 0
-    computerDeckEl.classList.add("outline")
-    computerDeckEl.classList.remove("back-mizzou-tiger-logo","shadow")
+    kuScoreEl.textContent = 52
+    mizzouScoreEl.textContent = 0
+    mizzouDeckEl.classList.add("outline")
+    mizzouDeckEl.classList.remove("back-mizzou-tiger-logo", "shadow")
   }
-  if ((playerDeck.length < 1) && (computerDeck.length > 0)) {
+  if ((kuDeck.length < 1) && (mizzouDeck.length > 0)) {
     messageEl.textContent = "Game Over! Tigers Win!"
-    playerScoreEl.textContent = 0
-    computerScoreEl.textContent = 52
-    playerDeckEl.classList.add("outline")
-    playerDeckEl.classList.remove("back-jayhawk","shadow")
+    kuScoreEl.textContent = 0
+    mizzouScoreEl.textContent = 52
+    kuDeckEl.classList.add("outline")
+    kuDeckEl.classList.remove("back-jayhawk", "shadow")
   }
 }
 
-function render(playerCard, computerCard) {
-  if (playerCard) {
-    playerCardEl.classList.remove("outline")
-    playerCardEl.classList.remove(playerCardToRemove)
-    playerCardEl.classList.add(playerCard.card)
-    playerCardToRemove = playerCard.card
-  } if (computerCard) {
-    computerCardEl.classList.remove("outline")
-    computerCardEl.classList.remove(computerCardToRemove)
-    computerCardEl.classList.add(computerCard.card)
-    computerCardToRemove = computerCard.card
+function render(kuCard, mizzouCard) {
+  if (kuCard) {
+    kuCardEl.classList.remove("outline")
+    kuCardEl.classList.remove(kuCardToRemove)
+    kuCardEl.classList.add(kuCard.card)
+    kuCardToRemove = kuCard.card
+  } if (mizzouCard) {
+    mizzouCardEl.classList.remove("outline")
+    mizzouCardEl.classList.remove(mizzouCardToRemove)
+    mizzouCardEl.classList.add(mizzouCard.card)
+    mizzouCardToRemove = mizzouCard.card
   }
 }
 
 function renderScore() {
-  playerScoreEl.textContent = playerDeck.length
-  computerScoreEl.textContent = computerDeck.length
+  kuScoreEl.textContent = kuDeck.length
+  mizzouScoreEl.textContent = mizzouDeck.length
 }
 
 function endGame() {
-  playerDeck.length = 52
-  computerDeck.length = 0
-  playerScoreEl.textContent = 52
-  computerScoreEl.textContent = 0
-  playerCardEl.classList.remove(playerCardToRemove)
-  computerCardEl.classList.remove(computerCardToRemove)
-  playerCardEl.classList.add("outline")
-  computerCardEl.classList.add("outline")
-  computerDeckEl.classList.remove("back-mizzou-tiger-logo","shadow")
-  computerDeckEl.classList.add("outline")
+  kuDeck.length = 52
+  mizzouDeck.length = 0
+  kuScoreEl.textContent = 52
+  mizzouScoreEl.textContent = 0
+  kuCardEl.classList.remove(kuCardToRemove)
+  mizzouCardEl.classList.remove(mizzouCardToRemove)
+  kuCardEl.classList.add("outline")
+  mizzouCardEl.classList.add("outline")
+  mizzouDeckEl.classList.remove("back-mizzou-tiger-logo", "shadow")
+  mizzouDeckEl.classList.add("outline")
   messageEl.textContent = "Game Over! Jayhawks Win!"
 }

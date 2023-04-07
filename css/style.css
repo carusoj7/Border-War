@@ -26,8 +26,12 @@ body {
   border: 0.15em dashed #000000;
 }
 
-.card.shadow {
+.card.back-jayhawk.shadow {
   box-shadow: 7px 7px 7px 0 rgba(197, 0, 0, 0.95) !important;
+
+}
+.card.back-mizzou-tiger-logo.shadow {
+  box-shadow: 7px 7px 7px 0 rgba(0, 0, 0, 0.95) !important;
 }
 
 #secretBtn {
@@ -40,8 +44,9 @@ body {
   margin-right: 1000px;
   margin-bottom: -200px;
   background-color: transparent;
-  opacity: .8;
+  opacity: .1;
   color: white;
+  border: none;
 }
 
 .btn {
